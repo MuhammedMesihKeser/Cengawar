@@ -1,0 +1,104 @@
+// Constructorýn üstüne
+
+	TextAttributes wall = new TextAttributes(Color.GRAY,Color.GRAY);	
+	TextAttributes reset = new TextAttributes(Color.BLACK,Color.BLACK);
+	TextAttributes CengPC = new TextAttributes(Color.RED,Color.BLACK);
+	TextAttributes TreePC = new TextAttributes(Color.ORANGE,Color.BLACK);
+	TextAttributes BasePC = new TextAttributes(Color.MAGENTA,Color.BLACK);
+	TextAttributes CengPL = new TextAttributes(Color.BLUE,Color.BLACK);
+	TextAttributes TreePL = new TextAttributes(Color.GREEN,Color.BLACK);
+	TextAttributes BasePL = new TextAttributes(Color.CYAN,Color.BLACK);
+
+
+
+public void screen(Point[][] map, int countqueue, Player player) {
+
+		for (int i = 0; i < 19; i++) {
+			for (int j = 0; j < 49; j++) {
+				if(map[i][j].getCharacter() == '#'){
+					cn.getTextWindow().setCursorPosition(5 + j,7 + i);
+					cn.setTextAttributes(wall);
+					System.out.println(" ");
+				} else if(map[i][j].getData() != null){
+					if (map[i][j].getData().substring(0, 2).equalsIgnoreCase("PC")) {
+						if(map[i][j].getData().substring(2, 3).equalsIgnoreCase("C")){
+							cn.getTextWindow().setCursorPosition(5 + j,7 + i);
+							cn.setTextAttributes(CengPC);
+							System.out.println("C");
+						} else if(map[i][j].getData().substring(2, 3).equalsIgnoreCase("T")){
+							cn.getTextWindow().setCursorPosition(5 + j,7 + i);
+							cn.setTextAttributes(TreePC);
+							System.out.println("T");
+						} else if (map[i][j].getCharacter() == '[') {
+							cn.getTextWindow().setCursorPosition(5 + j,7 + i);
+							cn.setTextAttributes(BasePC);
+							System.out.println("[");
+						} else if (map[i][j].getCharacter() == ']') {
+							cn.getTextWindow().setCursorPosition(5 + j,7 + i);
+							cn.setTextAttributes(BasePC);
+							System.out.println("]");
+						}
+					} else if (map[i][j].getData().substring(0, 2).equalsIgnoreCase("PL")) {
+						if(map[i][j].getData().substring(2, 3).equalsIgnoreCase("C")){
+							cn.getTextWindow().setCursorPosition(5 + j,7 + i);
+							cn.setTextAttributes(CengPL);
+							System.out.println("C");
+						} else if(map[i][j].getData().substring(2, 3).equalsIgnoreCase("T")){
+							cn.getTextWindow().setCursorPosition(5 + j,7 + i);
+							cn.setTextAttributes(TreePL);
+							System.out.println("T");
+						} else if (map[i][j].getCharacter() == '[') {
+							cn.getTextWindow().setCursorPosition(5 + j,7 + i);
+							cn.setTextAttributes(BasePL);
+							System.out.println("[");
+						} else if (map[i][j].getCharacter() == ']') {
+							cn.getTextWindow().setCursorPosition(5 + j,7 + i);
+							cn.setTextAttributes(BasePL);
+							System.out.println("]");
+						}
+					} 
+				} else {
+					cn.getTextWindow().setCursorPosition(5 + j,7 + i);
+					cn.setTextAttributes(reset);
+					cn.getTextWindow().output(map[i][j].getCharacter());
+				}
+			}
+		}
+
+			cn.getTextWindow().setCursorPosition(62, 0);
+			Time();
+			cn.getTextWindow().setCursorPosition(56, 1);
+			cn.getTextWindow().output("--- --- --- ---");
+			cn.getTextWindow().setCursorPosition(57, 2);
+			cn.getTextWindow().output("T   C   W   R");
+			cn.getTextWindow().setCursorPosition(56, 3);
+			cn.getTextWindow().output("--- --- --- ---");
+			cn.getTextWindow().setCursorPosition(5 , 2);
+			cn.getTextWindow().output("        ---------------");
+			cn.getTextWindow().setCursorPosition(5 , 1);
+			cn.getTextWindow().output("PQueue > ");
+			cn.getTextWindow().setCursorPosition(5 , 0);
+			cn.getTextWindow().output("        ---------------");
+			
+			cn.getTextWindow().setCursorPosition(5 , 3);
+			cn.getTextWindow().output("_________________________");
+			cn.getTextWindow().setCursorPosition(5 , 5);
+			Base b = new Base(true);
+			cn.getTextWindow().output("Base Life : " + b.getLife());
+
+			cn.getTextWindow().setCursorPosition(15, 1);
+			cn.getTextWindow().output("                    ");
+			if(!player.getBase().getBase_commands().isEmpty())
+			{
+				qx = 24;
+				//cn.getTextWindow().setCursorPosition(qx, 1);
+				for(int k=0; k<player.getBase().getBase_commands().size();k++)
+				{
+					cn.getTextWindow().setCursorPosition(qx, 1);
+					cn.getTextWindow().output(player.getBase().getBase_commands().peek().toString().substring(0,1) + "");
+					player.getBase().getBase_commands().enqueue(player.getBase().getBase_commands().dequeue());
+					qx = qx-2;
+				}
+
+			}
+		}

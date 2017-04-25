@@ -1,0 +1,40 @@
+public void battle(CengMAN cengman2, CengMAN cengman1,Point [][] map, Point location, PC p,Player p2)
+	{
+		
+		for(int i=-1; i<2; i++)
+		{
+			for(int j=-1; j<2; j++)
+			{
+		if(cengman1.getLocation().x_coordinate+i>=0 && cengman1.getLocation().x_coordinate+i<18 && cengman1.getLocation().y_coordinate+j>=0 && cengman1.getLocation().y_coordinate+j<48 &&  
+				i+cengman1.getLocation().x_coordinate==cengman2.getLocation().x_coordinate && j+cengman1.getLocation().y_coordinate==cengman2.getLocation().y_coordinate && (map[cengman2.getLocation().x_coordinate][cengman2.getLocation().y_coordinate].getCharacter()=='C') && map[cengman2.getLocation().x_coordinate][cengman2.getLocation().y_coordinate].getData().substring(0, 2).equalsIgnoreCase("PC"))
+		{
+			
+			
+			
+				
+					
+					
+					cengman2.setLife(cengman2.getLife()-(10*cengman1.getLevel()));
+					cengman1.setLife(cengman1.getLife()-(10*cengman2.getLevel()));
+					
+					
+				
+				
+			
+			if(cengman2.getLife()<= 0)
+			{
+				p.buryCengMAN();
+			}
+			if(cengman1.getLife()<= 0)
+			{
+				p2.buryCengMAN();
+			}
+					
+					
+		}
+			
+			}
+		}
+		
+				
+	}

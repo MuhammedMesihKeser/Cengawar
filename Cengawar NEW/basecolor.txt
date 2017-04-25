@@ -1,0 +1,20 @@
+// generateBases methodunun içine
+
+		map[x][y].setCharacter('[');
+		map[x][y].setData("PL ");
+		map[x][y+1].setCharacter(']');
+		map[x][y+1].setData("PL ");
+		player.getBase().setXcoordinate1(x);
+		player.getBase().setXcoordinate2(x);
+		player.getBase().setYcoordinate1(y);
+		player.getBase().setYcoordinate2(y+1);
+
+
+		map[x_enemy][y_enemy].setCharacter('[');
+		map[x_enemy][y_enemy].setData("PC ");
+		map[x_enemy][y_enemy+1].setCharacter(']');
+		map[x_enemy][y_enemy+1].setData("PC ");
+		pc.getBase().setXcoordinate1(x_enemy);
+		pc.getBase().setXcoordinate2(x_enemy);
+		pc.getBase().setYcoordinate1(y_enemy);
+		pc.getBase().setYcoordinate2(y_enemy+1);

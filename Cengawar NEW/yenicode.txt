@@ -1,0 +1,41 @@
+ public void cengmanInterface(Point [][] map, Player player) 
+	  {
+		
+		   
+		  if(mousepr==1)
+		  {
+			 
+
+			  if(mousex < 54 && mousex >5 && mousey <22 && mousey>3 && map[mousey-3][mousex-5].getCharacter()=='C' &&
+					  map[mousey-3][mousex-5].getData().substring(0,2).equalsIgnoreCase("PL"))
+			   {
+				   cn.getTextWindow().setCursorPosition(56, 5);
+				   cn.getTextWindow().output("---");
+				   for(int i=0; i<8;i++)
+				   {
+					   cn.getTextWindow().setCursorPosition(56, 6+i);
+					   cn.getTextWindow().output("| |");
+				   }
+				   cn.getTextWindow().setCursorPosition(56, 14);
+				   cn.getTextWindow().output("---");
+				   
+				   cn.getTextWindow().setCursorPosition(61, 5);
+				   cn.getTextWindow().output("ACTIVE UNIT");
+				   
+				   cn.getTextWindow().setCursorPosition(61, 7);
+				   cn.getTextWindow().output("CengMAN" +" "  +(Integer.parseInt(map[mousey-3][mousex-5].getData().substring(3))+1));
+				   
+				   cn.getTextWindow().setCursorPosition(61, 9);
+				   cn.getTextWindow().output("Life: "+ player.getCengman(Integer.parseInt(map[mousey-3][mousex-5].getData().substring(3))).getLife());
+
+				   cn.getTextWindow().setCursorPosition(61, 11);
+				   cn.getTextWindow().output("Level: "+ player.getCengman(Integer.parseInt(map[mousey-3][mousex-5].getData().substring(3))).getLevel());
+
+			   }
+			  
+			  
+			  mousepr = 0;
+		  }
+		  
+		  
+	  }
